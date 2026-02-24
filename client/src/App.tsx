@@ -3,7 +3,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch, Router as WouterRouter } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 
 function AppRoutes() {
@@ -22,17 +21,14 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark">
-        <TooltipProvider>
-          <Toaster />
+      <TooltipProvider>
+        <Toaster />
 
-          {/* 4. 使用 WouterRouter 包裹你的路由组件，并设置 base 属性 */}
-          <WouterRouter base={basePath}>
-            <AppRoutes />
-          </WouterRouter>
+        <WouterRouter base={basePath}>
+          <AppRoutes />
+        </WouterRouter>
 
-        </TooltipProvider>
-      </ThemeProvider>
+      </TooltipProvider>
     </ErrorBoundary>
   );
 }
